@@ -30,7 +30,7 @@ const UserProfile = () => {
           onClick={() => navigate(-1)}
           className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/20 backdrop-blur-sm transition-transform active:scale-95"
         >
-          <ArrowLeft className="h-4.5 w-4.5 text-white" />
+          <ArrowLeft className="h-[18px] w-[18px] text-white" />
         </button>
       </div>
 

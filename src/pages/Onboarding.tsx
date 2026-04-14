@@ -28,6 +28,8 @@ const slides = [
   },
 ];
 
+const withAlpha = (hslColor: string, alpha: number) => hslColor.replace(/^hsl\((.+)\)$/, `hsla($1, ${alpha})`);
+
 const Onboarding = () => {
   const [current, setCurrent] = useState(0);
   const navigate = useNavigate();
@@ -116,7 +118,7 @@ const Onboarding = () => {
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M0,18 C80,36 310,0 390,18 L390,36 L0,36 Z" fill="hsl(30, 50%, 97%)" />
+          <path d="M0,18 C80,36 310,0 390,18 L390,36 L0,36 Z" fill="hsl(var(--background))" />
         </svg>
       </div>
 
@@ -125,7 +127,7 @@ const Onboarding = () => {
         <div key={`text-${current}`}>
           <span
             className="inline-block rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-widest animate-fade-up"
-            style={{ background: `${slide.accentColor}18`, color: slide.accentColor }}
+            style={{ background: withAlpha(slide.accentColor, 0.09), color: slide.accentColor }}
           >
             {slide.label}
           </span>
@@ -151,7 +153,7 @@ const Onboarding = () => {
                 className="h-2 rounded-full transition-all duration-500"
                 style={{
                   width: i === current ? 28 : 8,
-                  background: i === current ? slide.accentColor : i < current ? `${slide.accentColor}50` : "hsl(220,12%,82%)",
+                  background: i === current ? slide.accentColor : i < current ? withAlpha(slide.accentColor, 0.31) : "hsl(220,12%,82%)",
                 }}
               />
             ))}
@@ -161,7 +163,7 @@ const Onboarding = () => {
           <button
             onClick={handleNext}
             className="flex h-14 w-14 items-center justify-center rounded-2xl shadow-orange transition-transform active:scale-90"
-            style={{ background: `linear-gradient(135deg, ${slide.accentColor}, ${slide.accentColor}cc)` }}
+            style={{ background: `linear-gradient(135deg, ${slide.accentColor}, ${withAlpha(slide.accentColor, 0.8)})` }}
           >
             <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />

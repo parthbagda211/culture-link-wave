@@ -79,9 +79,9 @@ const UserCard = ({ user, onClick, style }: UserCardProps) => {
       {/* Chevron → navigates to user profile */}
       <button
         onClick={handleChevron}
-        className="flex-shrink-0 flex h-9 w-9 items-center justify-center rounded-xl bg-muted transition-all hover:bg-accent hover:text-white active:scale-90"
+        className="flex-shrink-0 flex h-9 w-9 items-center justify-center rounded-xl bg-muted text-muted-foreground transition-all hover:bg-accent hover:text-white active:scale-90"
       >
-        <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-muted-foreground" />
+        <ChevronRight className="h-4 w-4" />
       </button>
     </div>
   );
