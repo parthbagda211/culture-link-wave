@@ -1,38 +1,39 @@
 import { useNavigate } from "react-router-dom";
-import onboardingConnect from "@/assets/onboarding-connect.png";
 
 const Login = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="relative flex min-h-[100dvh] flex-col overflow-hidden bg-background">
-      {/* Background decorations */}
-      <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-primary/10 blur-3xl" />
-      <div className="pointer-events-none absolute -left-16 bottom-32 h-40 w-40 rounded-full bg-accent/10 blur-3xl" />
+    <div className="relative flex min-h-[100dvh] flex-col overflow-hidden">
+      {/* Orange gradient top section */}
+      <div className="relative flex flex-1 flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[hsl(14,92%,55%)] via-[hsl(20,90%,52%)] to-[hsl(30,88%,48%)]">
+        {/* Decorative circles */}
+        <div className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-white/10" />
+        <div className="pointer-events-none absolute -left-20 top-8 h-40 w-40 rounded-full bg-white/8" />
+        <div className="pointer-events-none absolute right-8 bottom-12 h-24 w-24 rounded-full bg-white/10" />
+        <div className="pointer-events-none absolute left-12 bottom-4 h-16 w-16 rounded-full bg-white/8" />
 
-      {/* Main content */}
-      <div className="flex flex-1 flex-col items-center justify-center px-8">
         {/* Logo */}
-        <div className="mb-6 flex items-center gap-2 animate-fade-up">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl gradient-primary shadow-glow">
-            <span className="text-xl font-extrabold text-primary-foreground">G</span>
+        <div className="flex flex-col items-center gap-3 animate-fade-up">
+          <div className="flex h-20 w-20 items-center justify-center rounded-[22px] bg-white/20 shadow-lg backdrop-blur-sm border border-white/30">
+            <svg className="h-10 w-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8}>
+              <circle cx="12" cy="12" r="10" />
+              <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" />
+            </svg>
           </div>
+          <span className="text-3xl font-extrabold text-white tracking-tight">Globzy</span>
+        </div>
+      </div>
+
+      {/* White bottom card */}
+      <div className="rounded-t-[32px] bg-background px-6 pb-6 pt-8 shadow-elevated animate-slide-up">
+        <div className="mb-7 text-center">
+          <h1 className="text-2xl font-extrabold text-foreground">Sign in to continue</h1>
+          <p className="mt-1.5 text-sm text-muted-foreground">Join millions connecting worldwide</p>
         </div>
 
-        {/* Illustration */}
-        <div className="mb-8 w-48 animate-float">
-          <img src={onboardingConnect} alt="Globe" width={800} height={800} className="w-full" />
-        </div>
-
-        <h1 className="mb-2 text-center text-3xl font-extrabold text-foreground animate-fade-up">
-          Welcome to <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Globzy</span>
-        </h1>
-        <p className="mb-10 max-w-[280px] text-center text-sm leading-relaxed text-muted-foreground animate-fade-up" style={{ animationDelay: "0.1s" }}>
-          Your passport to global friendships, languages, and cultures.
-        </p>
-
-        {/* Buttons */}
-        <div className="flex w-full max-w-xs flex-col gap-3 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+        <div className="flex flex-col gap-3">
+          {/* Google */}
           <button
             onClick={() => navigate("/home")}
             className="group flex w-full items-center justify-center gap-3 rounded-2xl border-2 border-border bg-card py-4 text-sm font-bold text-foreground shadow-card transition-all hover:shadow-elevated active:scale-[0.97]"
@@ -46,25 +47,20 @@ const Login = () => {
             Continue with Google
           </button>
 
-          <button
-            onClick={() => navigate("/home")}
-            className="w-full rounded-2xl gradient-primary py-4 text-sm font-bold text-primary-foreground shadow-glow transition-transform active:scale-[0.97]"
-          >
-            Sign in with Email
-          </button>
-
-          <button
-            onClick={() => navigate("/home")}
-            className="w-full rounded-2xl bg-foreground py-4 text-sm font-bold text-background transition-transform active:scale-[0.97]"
-          >
-             Continue with Apple
-          </button>
         </div>
-      </div>
 
-      <p className="pb-8 text-center text-[11px] text-muted-foreground/60 safe-bottom">
-        By continuing you agree to our <span className="underline">Terms</span> & <span className="underline">Privacy Policy</span>
-      </p>
+        <p className="mt-6 text-center text-[11px] text-muted-foreground/60 safe-bottom">
+          By continuing, you agree to our{" "}
+          <span className="font-semibold text-accent underline-offset-2 underline">Terms of Service</span>{" "}
+          and{" "}
+          <span className="font-semibold text-accent underline-offset-2 underline">Privacy Policy</span>
+        </p>
+
+        <p className="mt-3 text-center text-[12px] text-muted-foreground">
+          New to Globzy?{" "}
+          <span className="font-bold text-accent cursor-pointer">Create Account</span>
+        </p>
+      </div>
     </div>
   );
 };

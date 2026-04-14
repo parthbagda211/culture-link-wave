@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Camera, Edit3, Globe, BookOpen, Heart, MapPin } from "lucide-react";
+import { Camera, Edit3, Globe, BookOpen, Heart, Eye, ChevronRight } from "lucide-react";
 import BottomNav from "@/components/BottomNav";
 
 const Profile = () => {
@@ -7,6 +7,7 @@ const Profile = () => {
   const [age, setAge] = useState("25");
   const [bio, setBio] = useState("Traveler & language enthusiast 🌍 Learning Japanese and Spanish. Love meeting new people and exploring cultures!");
   const [editing, setEditing] = useState(false);
+  const [showAllPhotos, setShowAllPhotos] = useState(false);
 
   const photos = [
     "https://i.pravatar.cc/300?img=32",
@@ -17,7 +18,7 @@ const Profile = () => {
 
   const stats = [
     { label: "Friends", value: "248", icon: Heart },
-    { label: "Countries", value: "12", icon: MapPin },
+    { label: "Profile Views", value: "1.2k", icon: Eye },
     { label: "Languages", value: "3", icon: Globe },
   ];
 
@@ -151,25 +152,31 @@ const Profile = () => {
               </div>
               Photos
             </div>
-            <span className="text-[11px] font-semibold text-primary">See all</span>
+            <button
+              onClick={() => setShowAllPhotos(!showAllPhotos)}
+              className="flex items-center gap-0.5 text-[11px] font-semibold text-primary"
+            >
+              {showAllPhotos ? "Show less" : "See all"}
+              <ChevronRight className={`h-3 w-3 transition-transform ${showAllPhotos ? "rotate-90" : ""}`} />
+            </button>
           </div>
-          <div className="grid grid-cols-2 gap-2">
-            {photos.map((p, i) => (
+
+          {/* Horizontal scroll strip — always visible */}
+          <div className="flex gap-2 overflow-x-auto no-scrollbar">
+            {(showAllPhotos ? photos : photos.slice(0, 3)).map((p, i) => (
               <img
                 key={i}
                 src={p}
                 alt="Photo"
-                className="aspect-square rounded-xl object-cover transition-transform active:scale-[0.97]"
+                className="h-24 w-24 flex-shrink-0 rounded-xl object-cover transition-transform active:scale-[0.97]"
                 loading="lazy"
-                width={150}
-                height={150}
+                width={96}
+                height={96}
               />
             ))}
-            <button className="flex aspect-square items-center justify-center rounded-xl border-2 border-dashed border-border/60 text-muted-foreground transition-colors active:bg-muted/40">
-              <div className="flex flex-col items-center gap-1">
-                <Camera className="h-6 w-6" />
-                <span className="text-[10px] font-medium">Add Photo</span>
-              </div>
+            <button className="flex h-24 w-24 flex-shrink-0 flex-col items-center justify-center gap-1 rounded-xl border-2 border-dashed border-border/60 text-muted-foreground transition-colors active:bg-muted/40">
+              <Camera className="h-5 w-5" />
+              <span className="text-[10px] font-medium">Add</span>
             </button>
           </div>
         </div>

@@ -90,9 +90,9 @@ const SettingsPage = () => {
       <div className="mt-6 px-4">
         <button
           onClick={() => navigate("/")}
-          className="flex w-full items-center justify-center gap-2 rounded-2xl border border-destructive/20 bg-destructive/5 py-3.5 text-sm font-bold text-destructive transition-all active:bg-destructive/10 active:scale-[0.98]"
+          className="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-destructive py-4 text-[14px] font-bold text-white shadow-card transition-all active:opacity-90 active:scale-[0.98]"
         >
-          <LogOut className="h-4 w-4" />
+          <LogOut className="h-4.5 w-4.5" />
           Log Out
         </button>
       </div>
