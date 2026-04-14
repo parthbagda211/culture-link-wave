@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage";
 import Messages from "./pages/Messages";
 import ChatScreen from "./pages/ChatScreen";
 import Profile from "./pages/Profile";
+import UserProfile from "./pages/UserProfile";
 import SettingsPage from "./pages/SettingsPage";
 import NotFound from "./pages/NotFound";
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/home" element={<HomePage />} />
           <Route path="/messages" element={<Messages />} />
           <Route path="/chat/:userId" element={<ChatScreen />} />
+          <Route path="/user/:userId" element={<UserProfile />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="*" element={<NotFound />} />
